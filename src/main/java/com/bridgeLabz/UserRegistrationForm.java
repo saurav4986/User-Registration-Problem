@@ -4,10 +4,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * (UC-3_Email)
- As a User need to enter a valid email
- - E.g. abc.xyz@bl.co.in
- - Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with precise @ and . positions
+ * (UC-4_Mobile_Number)
+ As a User need to follow pre-defined Mobile Format
+ - E.g. 91 9919819801 - Country code follow by space and 10-digit number
  */
 public class UserRegistrationForm
 {
@@ -42,6 +41,16 @@ public class UserRegistrationForm
             System.out.println("You have entered valid Email Address");
         } else {
             System.out.println("Sorry! you have entered invalid Email Address");
+        }
+
+        System.out.println("Please enter your Mobile Number: ");
+        String mobileNumber = sc.next();
+        String mobileNumberPattern="^(91)[ ]{1}[1-9]{1}[0-9]{9}$";
+        boolean mnCheck = Pattern.matches(mobileNumberPattern, mobileNumber);
+        if (mnCheck) {
+            System.out.println("You have entered valid Mobile Number");
+        } else {
+            System.out.println("Sorry! you have entered invalid Mobile Number");
         }
     }
 }
