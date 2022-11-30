@@ -29,7 +29,7 @@ public class UserRegistrationFormTest
     }
 
     /**
-     * Rigourous Test :-)
+     * Rigorous Test :-)
      */
     public void testApp()
     {
