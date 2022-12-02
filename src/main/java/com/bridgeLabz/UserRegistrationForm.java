@@ -4,9 +4,11 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * (UC-4_Mobile_Number)
- As a User need to follow pre-defined Mobile Format
- - E.g. 91 9919819801 - Country code follow by space and 10-digit number
+ * (UC-5_Password)
+ As a User need to follow pre-defined Password rules.
+ Rule1
+ – minimum 8 Characters
+ - NOTE – All rules must be passed
  */
 public class UserRegistrationForm
 {
@@ -51,6 +53,16 @@ public class UserRegistrationForm
             System.out.println("You have entered valid Mobile Number");
         } else {
             System.out.println("Sorry! you have entered invalid Mobile Number");
+        }
+
+        System.out.println("Please enter your Password: ");
+        String password = sc.next();
+        String passwordPattern="[A-Za-z0-9]{8,}$";
+        boolean passwordCheck = Pattern.matches(passwordPattern,password);
+        if (passwordCheck) {
+            System.out.println("You have entered valid Password");
+        } else {
+            System.out.println("Sorry! you have entered invalid Password");
         }
     }
 }
