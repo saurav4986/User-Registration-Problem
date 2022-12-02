@@ -4,17 +4,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * (UC-8_Pwd_Special_Character)
- As a User need to follow pre-defined Password rules.
- Rule1
- – minimum 8 Characters
- Rule2
- – Should have at least 1 Upper Case
- Rule3
- – Should have at least 1 numeric number in the password
- Rule4
- – Has exactly 1 Special Character
- - NOTE – All rules must be passed
+ * (UC-9_Email_Sample)
+ Should clear all email samples provided separately
  */
 public class UserRegistrationForm
 {
@@ -41,9 +32,21 @@ public class UserRegistrationForm
             System.out.println("Sorry! you have entered invalid Last Name");
         }
 
+
         System.out.println("Please enter your Email Address: ");
-        String email = sc.next();
-        String emailPattern="^[a-z0-9]{3,}[+.-]?[a-z0-9]{0,}[@]{1,}[a-z0-9]{1,}[.]{1,}([a-z]{0,}[.]{0,})[a-z]{2,}$";
+        String email = sc.nextLine();
+        String emailPattern = "^[a-z0-9]{3,}[+.-]?[a-z0-9]{0,}[@]{1,}[a-z0-9]{1,}[.]{1,}([a-z]{0,}[.]{0,})[a-z]{2,}$";
+		/*UC9:Email Sample to check
+		 abc@yahoo.com
+		abc-100@yahoo.com
+		abc.100@yahoo.com
+		abc111@abc.com
+		abc-100@abc.net
+		abc.100@abc.com.au
+		abc@1.com
+		abc@gmail.co
+		abc+100@gmail.com
+		  */
         boolean emailCheck = Pattern.matches(emailPattern, email);
         if (emailCheck) {
             System.out.println("You have entered valid Email Address");
