@@ -4,16 +4,16 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * (UC-7_Pwd_Numeric)
+ * (UC-8_Pwd_Special_Character)
  As a User need to follow pre-defined Password rules.
  Rule1
  – minimum 8 Characters
- - NOTE – All rules must be passed
  Rule2
  – Should have at least 1 Upper Case
- - NOTE – All rules must be passed
  Rule3
  – Should have at least 1 numeric number in the password
+ Rule4
+ – Has exactly 1 Special Character
  - NOTE – All rules must be passed
  */
 public class UserRegistrationForm
@@ -61,19 +61,35 @@ public class UserRegistrationForm
             System.out.println("Sorry! you have entered invalid Mobile Number");
         }
 
+        // Password:
         System.out.println("Please enter your Password: ");
-        String password = sc.next();
-        //UC5: Password with the rule of minimum 8 characters
-        //String passwordPattern="[A-Za-z0-9]{8,}$"; should have minimum 8 characters
+        String password = sc.nextLine();
+        // UC5: Password with the rule of minimum 8 characters
+        // String passwordPattern="[A-Za-z0-9]{8,}$"; should have minimum 8 characters
 
-        //UC6: Password with the rule of minimum 1 capital letter
-        //String passwordPattern="^(?=.*[A-Z])([A-Za-z0-9]){8,}$";
+        // UC6: Password with the rule of minimum 1 capital letter
+        // String passwordPattern="^(?=.*[A-Z])([A-Za-z0-9]){8,}$";
 
-        //UC7: Password with the rule of minimum 1 number in the password
-        String passwordPattern="^(?=.*[0-9])(?=.*[A-Z])([A-Za-z0-9]){8,}$";
-        boolean passwordCheck = Pattern.matches(passwordPattern,password);
+        // UC7: Password with the rule of minimum 1 number in the password
+        // String passwordPattern="^(?=.*[0-9])(?=.*[A-Z])([A-Za-z0-9]){8,}$";
+
+        // UC8:Password with the rule of only 1 special character
+        String passwordPattern = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[~!@#$%^&*()<>:{},.;'])([A-Za-z0-9~!@#$%^&*()<>:{},.;']){8,}$";
+        boolean passwordCheck = Pattern.matches(passwordPattern, password);
+        int count = 0;
+        for (int i = 0; i < password.length(); i++) {
+            if (!Character.isDigit(password.charAt(i)) && !Character.isLetter(password.charAt(i))
+                    && !Character.isWhitespace(password.charAt(i))) {
+                count++;
+            }
+        }
+
         if (passwordCheck) {
-            System.out.println("You have entered valid Password");
+            if (count == 0 || count > 1) {
+                System.out.println("Sorry! you have entered invalid Password");
+            } else {
+                System.out.println("You have entered valid Password");
+            }
         } else {
             System.out.println("Sorry! you have entered invalid Password");
         }
