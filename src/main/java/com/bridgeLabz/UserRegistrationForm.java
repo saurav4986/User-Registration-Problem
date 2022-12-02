@@ -4,10 +4,17 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * (UC-3_Email)
- As a User need to enter a valid email
- - E.g. abc.xyz@bl.co.in
- - Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with precise @ and . positions
+ * (UC-7_Pwd_Numeric)
+ As a User need to follow pre-defined Password rules.
+ Rule1
+ – minimum 8 Characters
+ - NOTE – All rules must be passed
+ Rule2
+ – Should have at least 1 Upper Case
+ - NOTE – All rules must be passed
+ Rule3
+ – Should have at least 1 numeric number in the password
+ - NOTE – All rules must be passed
  */
 public class UserRegistrationForm
 {
@@ -42,6 +49,33 @@ public class UserRegistrationForm
             System.out.println("You have entered valid Email Address");
         } else {
             System.out.println("Sorry! you have entered invalid Email Address");
+        }
+
+        System.out.println("Please enter your Mobile Number: ");
+        String mobileNumber = sc.next();
+        String mobileNumberPattern="^(91)[ ]{1}[1-9]{1}[0-9]{9}$";
+        boolean mnCheck = Pattern.matches(mobileNumberPattern, mobileNumber);
+        if (mnCheck) {
+            System.out.println("You have entered valid Mobile Number");
+        } else {
+            System.out.println("Sorry! you have entered invalid Mobile Number");
+        }
+
+        System.out.println("Please enter your Password: ");
+        String password = sc.next();
+        //UC5: Password with the rule of minimum 8 characters
+        //String passwordPattern="[A-Za-z0-9]{8,}$"; should have minimum 8 characters
+
+        //UC6: Password with the rule of minimum 1 capital letter
+        //String passwordPattern="^(?=.*[A-Z])([A-Za-z0-9]){8,}$";
+
+        //UC7: Password with the rule of minimum 1 number in the password
+        String passwordPattern="^(?=.*[0-9])(?=.*[A-Z])([A-Za-z0-9]){8,}$";
+        boolean passwordCheck = Pattern.matches(passwordPattern,password);
+        if (passwordCheck) {
+            System.out.println("You have entered valid Password");
+        } else {
+            System.out.println("Sorry! you have entered invalid Password");
         }
     }
 }
