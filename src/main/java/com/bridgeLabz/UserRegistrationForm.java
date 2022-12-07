@@ -10,15 +10,15 @@ import java.util.regex.Pattern;
  - Happy Test Case validates the Entry Successfully
  - Sad Test Cases fails the Entry */
 public class UserRegistrationForm {
-    static Scanner sc = new Scanner(System.in);
+    //static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         // Master
         System.out.println("Welcome to User Registration program");
         UserRegistrationForm urf = new UserRegistrationForm();
-        System.out.println("Please enter your First Name: ");
+        *//*System.out.println("Please enter your First Name: ");
         String firstName = sc.nextLine();
-        urf.checkFirstName(firstName);
+        urf.checkFirstName(String firstName);
 
         System.out.println("Please enter your Last Name: ");
         String lastName = sc.nextLine();
@@ -36,8 +36,8 @@ public class UserRegistrationForm {
         String password = sc.nextLine();
         urf.checkPassword(password);
         System.out.println("Thank you for using Registering user!");
-        sc.close();
-    }
+        sc.close();*//*
+    }*/
 
     public boolean checkPassword(String password) {
         // Password:
@@ -119,7 +119,7 @@ public class UserRegistrationForm {
 
     }
 
-    public boolean checkFirstName(String firstName) {
+    public static boolean checkFirstName(String firstName) {
         // UC1:First Name
         boolean res = Pattern.matches("^[A-Z][a-z]{2,}$", firstName);
         if (res) {
