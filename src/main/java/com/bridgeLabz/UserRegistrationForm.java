@@ -10,15 +10,15 @@ import java.util.regex.Pattern;
  - Happy Test Case validates the Entry Successfully
  - Sad Test Cases fails the Entry */
 public class UserRegistrationForm {
-    //static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
         // Master
         System.out.println("Welcome to User Registration program");
         UserRegistrationForm urf = new UserRegistrationForm();
-        *//*System.out.println("Please enter your First Name: ");
+        System.out.println("Please enter your First Name: ");
         String firstName = sc.nextLine();
-        urf.checkFirstName(String firstName);
+        urf.checkFirstName(firstName);
 
         System.out.println("Please enter your Last Name: ");
         String lastName = sc.nextLine();
@@ -36,8 +36,8 @@ public class UserRegistrationForm {
         String password = sc.nextLine();
         urf.checkPassword(password);
         System.out.println("Thank you for using Registering user!");
-        sc.close();*//*
-    }*/
+        sc.close();
+    }
 
     public boolean checkPassword(String password) {
         // Password:
@@ -71,7 +71,12 @@ public class UserRegistrationForm {
                 System.out.println("You have entered valid Password");
             }
         } else {
-            System.out.println("Sorry! you have entered invalid Password");
+            try {
+                throw new InvalidUserDetailsException("Invalid Password");
+            } catch (InvalidUserDetailsException e) {
+                e.printStackTrace();
+                System.out.println("BAD Test");
+            }
         }
         return flag;
 
@@ -84,7 +89,12 @@ public class UserRegistrationForm {
         if (mnCheck) {
             System.out.println("You have entered valid Mobile Number");
         } else {
-            System.out.println("Sorry! you have entered invalid Mobile Number");
+            try {
+                throw new InvalidUserDetailsException("Invalid Mobile Number");
+            } catch (InvalidUserDetailsException e) {
+                e.printStackTrace();
+                System.out.println("BAD Test");
+            }
         }
         return mnCheck;
     }
@@ -101,7 +111,12 @@ public class UserRegistrationForm {
         if (emailCheck) {
             System.out.println("You have entered valid Email Address");
         } else {
-            System.out.println("Sorry! you have entered invalid Email Address");
+            try {
+                throw new InvalidUserDetailsException("Invalid Email");
+            } catch (InvalidUserDetailsException e) {
+                e.printStackTrace();
+                System.out.println("BAD Test");
+            }
         }
         return emailCheck;
 
@@ -113,7 +128,12 @@ public class UserRegistrationForm {
         if (lastNameCheck) {
             System.out.println("You have entered valid Last Name");
         } else {
-            System.out.println("Sorry! you have entered invalid Last Name");
+            try {
+                throw new InvalidUserDetailsException("Invalid Name");
+            } catch (InvalidUserDetailsException e) {
+                e.printStackTrace();
+                System.out.println("BAD Test");
+            }
         }
         return lastNameCheck;
 
@@ -123,11 +143,15 @@ public class UserRegistrationForm {
         // UC1:First Name
         boolean res = Pattern.matches("^[A-Z][a-z]{2,}$", firstName);
         if (res) {
-            System.out.println("    You have entered valid First Name");
+            System.out.println("You have entered valid First Name");
         } else {
-            System.out.println("Sorry! you have entered invalid First Name");
+            try {
+                throw new InvalidUserDetailsException("Invalid Name");
+            } catch (InvalidUserDetailsException e) {
+                e.printStackTrace();
+                System.out.println("BAD Test");
+            }
         }
         return res;
-
     }
 }
